@@ -1,5 +1,5 @@
 {
-  "name": "npm-template",
+  "name": "@goodswifter/npm-template",
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@10.12.3",
