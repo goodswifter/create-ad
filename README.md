@@ -13,26 +13,12 @@
 - 🔧 支持命令行交互式配置
 - 📱 跨平台兼容（Windows/macOS/Linux）
 
-## 📦 安装
-
-使用 npm 全局安装：
-
-```bash
-npm install -g @goodswifter/create-ad
-```
-
-或使用 pnpm：
-
-```bash
-pnpm add -g @goodswifter/create-ad
-```
-
 ## 🚀 快速开始
 
 ### 创建项目
 
 ```bash
-ad create my-project
+pnpm create ad my-project
 ```
 
 运行命令后，会出现交互式界面供您选择项目模板：
@@ -42,24 +28,9 @@ ad create my-project
 3. **Vue3 门户模板** - Vue3 门户网站模板
 4. **Vue3 后端管理系统模板** - Vue3 后台管理系统模板
 
-### 添加组件
-
-在项目中快速生成 Vue 组件：
-
-```bash
-# 在默认位置(src/components)创建组件
-ad addCpn MyComponent
-
-# 在指定目录创建组件
-ad addCpn NavBar -d src/layout
-
-# 创建组件并生成独立文件夹
-ad addCpn UserCard -d src/components --dir
-```
-
 ## 📋 命令详解
 
-### `ad create <project-name>`
+### `pnpm create ad <project-name>`
 
 创建新项目
 
@@ -68,30 +39,7 @@ ad addCpn UserCard -d src/components --dir
 
 **示例：**
 ```bash
-ad create my-vue-app
-```
-
-### `ad addCpn <component-name> [options]`
-
-添加 Vue 组件
-
-**参数：**
-- `component-name` - 组件名称（支持驼峰命名）
-
-**选项：**
-- `-d, --dest <directory>` - 指定组件生成目录（默认：src/components）
-- `--dir` - 为组件创建独立文件夹
-
-**示例：**
-```bash
-# 基础用法
-ad addCpn UserProfile
-
-# 指定目录
-ad addCpn HeaderNav -d src/layout
-
-# 创建独立文件夹
-ad addCpn ProductCard -d src/components --dir
+pnpm create ad my-vue-app
 ```
 
 ## 🛠️ 功能详情
