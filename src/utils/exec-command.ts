@@ -1,12 +1,12 @@
-import { spawn, SpawnOptions, ChildProcess } from 'child_process'
+import type { ChildProcess, SpawnOptions } from 'child_process'
+import { spawn } from 'child_process'
 
 const execCommand = (
   command: string,
   args: string[] = [],
   options?: SpawnOptions,
 ): Promise<void> => {
-  return new Promise(resolve => {
-    console.log([command, args, options])
+  return new Promise((resolve) => {
     // npm install/npm run dev
     // 1.开启子进程执行命令
     const childProcess: ChildProcess = options

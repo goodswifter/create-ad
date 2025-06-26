@@ -1,19 +1,19 @@
-import git from '@npmcli/git'
-import path from 'path'
-import fs from 'fs/promises'
-import { VUE_REPO_BRANCH, GIT_BASE_URL, TEMPLATE_LIST } from '../config/repo'
-import execCommand from '../utils/exec-command'
-import { compileEjs } from '../utils/compile-ejs'
-import { writeFile } from '../utils/write-file'
-import { program } from 'commander'
-import { camelCaseToKebabCase } from '../utils/string-util'
-import inquirer from 'inquirer'
 import type {
-  TemplateOption,
   CommandOptions,
   GitCloneOptions,
   InquirerAnswer,
+  TemplateOption,
 } from '../types/index.js'
+import fs from 'fs/promises'
+import path from 'path'
+import git from '@npmcli/git'
+import { program } from 'commander'
+import inquirer from 'inquirer'
+import { GIT_BASE_URL, TEMPLATE_LIST, VUE_REPO_BRANCH } from '../config/repo'
+import { compileEjs } from '../utils/compile-ejs'
+import execCommand from '../utils/exec-command'
+import { camelCaseToKebabCase } from '../utils/string-util'
+import { writeFile } from '../utils/write-file'
 
 /**
  * 添加组件
@@ -37,7 +37,8 @@ export async function addComponentAction(cpnName: string): Promise<void> {
   const dest = isDir ? `${optDest}/${cpnKebabName}` : optDest
   try {
     await fs.mkdir(dest, { recursive: true })
-  } catch (error: any) {
+  }
+  catch (error: any) {
     if (error.code !== 'EEXIST') {
       throw error
     }
@@ -46,48 +47,7 @@ export async function addComponentAction(cpnName: string): Promise<void> {
   // 4.将result写入到对应的文件夹中
   const file = isDir ? 'index.vue' : `${cpnKebabName}.vue`
   await writeFile(`${dest}/${file}`, result)
-  console.log('创建组件成功:', cpnName + '.vue')
-}
-
-/**
- * 创建项目
- * @param project 项目名称
- */
-export async function createProjectAction(project: string): Promise<void> {
-  console.log(`创建项目: ${project}`)
-
-  try {
-    const answers = await inquirer.prompt<InquirerAnswer>([
-      {
-        type: 'list',
-        name: 'template',
-        message: '请选择一个模板:',
-        choices: TEMPLATE_LIST,
-      },
-    ])
-
-    console.log(`你选择的模板是: ${answers.template}`)
-    const template = TEMPLATE_LIST.find((item: TemplateOption) => item.value === answers.template)
-
-    if (!template) {
-      throw new Error('未找到指定的模板')
-    }
-
-    const targetPath = `./${project}` // 克隆到当前目录下的项目文件夹
-    const options: GitCloneOptions = { repo: `${GIT_BASE_URL}/${template.repo}.git` }
-
-    // 1. 下载模板
-    await downloadTemplate(project, targetPath, options)
-
-    // 2. 执行命令
-    await execCmds(project)
-  } catch (error: any) {
-    if (error.toString().includes('ExitPromptError')) {
-      console.log('退出成功')
-    } else {
-      console.error('Error:', error)
-    }
-  }
+  console.log('创建组件成功:', `${cpnName}.vue`)
 }
 
 /**
@@ -138,4 +98,47 @@ const downloadTemplate = async (
 
   // 3. 写回文件
   await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+}
+
+/**
+ * 创建项目
+ * @param project 项目名称
+ */
+export async function createProjectAction(project: string): Promise<void> {
+  console.log(`创建项目: ${project}`)
+
+  try {
+    const answers = await inquirer.prompt<InquirerAnswer>([
+      {
+        type: 'list',
+        name: 'template',
+        message: '请选择一个模板:',
+        choices: TEMPLATE_LIST,
+      },
+    ])
+
+    console.log(`你选择的模板是: ${answers.template}`)
+    const template = TEMPLATE_LIST.find((item: TemplateOption) => item.value === answers.template)
+
+    if (!template) {
+      throw new Error('未找到指定的模板')
+    }
+
+    const targetPath = `./${project}` // 克隆到当前目录下的项目文件夹
+    const options: GitCloneOptions = { repo: `${GIT_BASE_URL}/${template.repo}.git` }
+
+    // 1. 下载模板
+    await downloadTemplate(project, targetPath, options)
+
+    // 2. 执行命令
+    await execCmds(project)
+  }
+  catch (error: any) {
+    if (error.toString().includes('ExitPromptError')) {
+      console.log('退出成功')
+    }
+    else {
+      console.error('Error:', error)
+    }
+  }
 }
