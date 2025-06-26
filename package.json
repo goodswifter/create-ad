@@ -1,18 +1,18 @@
 {
-  "name": "@goodswifter/npm-test",
+  "name": "npm-template",
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@10.12.3",
-  "description": "Opinionated collection of common JavaScript / TypeScript utils by @antfu",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "description": "npm template",
+  "author": "goodswifter <104248086@qq.com>",
   "license": "MIT",
-  "homepage": "https://github.com/goodswifter/npm-test",
+  "homepage": "https://gitee.com/zad-front-end/npm-template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goodswifter/npm-test"
+    "url": "git+https://gitee.com/zad-front-end/npm-template"
   },
   "keywords": [
-    "utils"
+    "template"
   ],
   "sideEffects": false,
   "exports": {
@@ -26,8 +26,8 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "dev": "unbuild --stub",
-    "dev:watch": "unbuild --watch",
+    "dev": "unbuild --watch",
+    "dev:stub": "unbuild --stub",
     "lint": "eslint .",
     "lint-fix": "nr lint --fix",
     "prepublishOnly": "pnpm run build",
