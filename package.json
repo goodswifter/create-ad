@@ -1,7 +1,7 @@
 {
-  "name": "@goodswifter/npm-template",
+  "name": "@goodswifter/create-ad",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "packageManager": "pnpm@10.12.3",
   "description": "npm template",
   "author": "goodswifter <104248086@qq.com>",
