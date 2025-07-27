@@ -1,9 +1,5 @@
 import { defineBuildConfig } from 'unbuild'
 
-/**
- * "build": "./node_modules/.bin/unbuild",
- * "dev": "./node_modules/.bin/unbuild --stub",
- */
 export default defineBuildConfig({
   entries: [
     'src/index',

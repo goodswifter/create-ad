@@ -18,8 +18,11 @@ export default antfu({
   rules: {
     // 禁用 prefer-node-protocol 规则
     'unicorn/prefer-node-protocol': 'off',
+    // require('process'); // 不再报错
     'node/prefer-global/process': 'off',
-    'antfu/top-level-function': 'off', // 禁用 top-level-function 规则
-    'no-console': 'off',
+    // 不再必须使用 export function foo() {}
+    // 可以使用 export const foo = () => {}
+    'antfu/top-level-function': 'off',
+    'no-console': 'off', // 关闭 console 规则
   },
 })

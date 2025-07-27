@@ -1,7 +1,7 @@
-import path from 'path'
-import ejs from 'ejs'
-import { fileURLToPath } from 'url'
 import type { CompileData } from '../types'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import ejs from 'ejs'
 
 // 获取当前文件的目录路径
 const __filename = fileURLToPath(import.meta.url)

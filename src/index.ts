@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env node
 import { program } from 'commander'
 import { createProjectAction } from './core/actions.js'
 import helpOptions from './core/help-options.js'
