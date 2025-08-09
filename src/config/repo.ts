@@ -13,6 +13,5 @@ export const GIT_BASE_URL = 'https://gitee.com/zad-front-end'
  */
 export const TEMPLATE_LIST: TemplateOption[] = [
   { name: '1. npm 单包模板', value: 'npm', repo: 'npm-template' },
-  { name: '2. Vue3 基础模板', value: 'base', repo: 'vue3-base-template' },
-  { name: '3. npm example 模板', value: 'example', repo: 'npm-example-template' },
+  { name: '2. github page 模板', value: 'github', repo: 'github-page-template' },
 ]
