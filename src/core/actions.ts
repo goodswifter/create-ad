@@ -56,7 +56,6 @@ export async function addComponentAction(cpnName: string): Promise<void> {
  */
 const execCmds = async (project: string): Promise<void> => {
   // 1. 帮助执行 pnpm install
-  console.log(process.platform)
   const isWin = process.platform === 'win32'
   const commandName = 'pnpm'
   await execCommand(commandName, ['install'], { cwd: `./${project}` })
