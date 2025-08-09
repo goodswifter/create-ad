@@ -1,7 +1,7 @@
 {
   "name": "create-ad",
   "type": "module",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "packageManager": "pnpm@10.14.0",
   "description": "create-ad",
   "author": "goodswifter <104248086@qq.com>",
